@@ -2,10 +2,6 @@
 
 An interactive animated heatmap visualizing the height and weight distribution of every NBA player across 80 seasons.
 
-**[→ Live Demo](https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/)**
-
-![Preview](https://img.shields.io/badge/players-5%2C382-f0a050?style=flat-square) ![Preview](https://img.shields.io/badge/seasons-80-3d7a8a?style=flat-square) ![Preview](https://img.shields.io/badge/framework-vanilla_JS-0c0e13?style=flat-square)
-
 ## Features
 
 - **Animated playback** through every NBA season from 1947 to 2026 with smooth interpolated transitions
