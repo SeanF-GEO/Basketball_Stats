@@ -10,9 +10,8 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#0c0e13;--surface:#12141a;--surface2:#181b23;--border:rgba(255,255,255,.06);
-  --text:#e4e2df;--text2:#9d9b97;--text3:#5c5a57;
+  --text:#e4e2df;--text2:#9d9b97;--text3:#6e6c68;
   --accent:#f0a050;--accentDim:rgba(240,160,80,.15);
-  --hot:#fff4e0;--warm:#f0a050;--mid:#3d7a8a;--cool:#1a3248;--void:#0c0e13;
   --sans:'DM Sans',system-ui,sans-serif;--display:'Instrument Serif',Georgia,serif;
 }
 html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}
@@ -22,93 +21,82 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 #intro{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity 1s ease,visibility 1s}
 #intro.out{opacity:0;visibility:hidden;pointer-events:none}
 .intro-inner{text-align:center;max-width:600px;padding:2rem}
-.intro-count{font-family:var(--display);font-size:clamp(4rem,12vw,9rem);font-weight:400;color:var(--accent);line-height:1;opacity:0;animation:countUp .01s forwards}
-.intro-label{font-size:.8rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--text3);margin-top:.5rem;opacity:0;animation:fadeUp .8s ease .3s forwards}
+.intro-count{font-family:var(--display);font-size:clamp(4rem,12vw,9rem);font-weight:400;color:var(--accent);line-height:1;opacity:0}
+.intro-label{font-size:1rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--text3);margin-top:.5rem;opacity:0;animation:fadeUp .8s ease .3s forwards}
 .intro-title{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,3vw,1.8rem);color:var(--text2);margin-top:2rem;opacity:0;animation:fadeUp .8s ease .6s forwards;line-height:1.5}
 .intro-rule{width:40px;height:1px;background:var(--accent);margin:1.5rem auto;opacity:0;animation:fadeUp .8s ease .9s forwards}
-.intro-range{font-size:.75rem;color:var(--text3);letter-spacing:.3em;text-transform:uppercase;opacity:0;animation:fadeUp .8s ease 1s forwards}
+.intro-range{font-size:.9rem;color:var(--text3);letter-spacing:.3em;text-transform:uppercase;opacity:0;animation:fadeUp .8s ease 1s forwards}
 .intro-btn{margin-top:2.5rem;opacity:0;animation:fadeUp .8s ease 1.4s forwards}
-.intro-btn button{font-family:var(--sans);font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid rgba(240,160,80,.25);padding:.85rem 2.8rem;cursor:pointer;transition:all .35s ease;border-radius:2px}
+.intro-btn button{font-family:var(--sans);font-size:.85rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid rgba(240,160,80,.25);padding:.85rem 2.8rem;cursor:pointer;transition:all .35s ease;border-radius:2px}
 .intro-btn button:hover{background:var(--accentDim);border-color:var(--accent)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ═══════ LAYOUT ═══════ */
-#app{position:relative;z-index:1;width:100%;height:100%;display:none;flex-direction:column;padding:clamp(.6rem,1.5vh,1.2rem) clamp(.8rem,2.5vw,2rem) clamp(.4rem,1vh,.7rem)}
+#app{position:relative;z-index:1;width:100%;height:100%;display:none;flex-direction:column;padding:clamp(.6rem,1.5vh,1.2rem) clamp(1rem,3vw,2.5rem) clamp(.4rem,1vh,.7rem)}
 #app.show{display:flex}
 
 /* ═══════ HEADER ═══════ */
-.hdr{display:flex;align-items:baseline;justify-content:space-between;flex-shrink:0;margin-bottom:clamp(.2rem,.6vh,.5rem)}
-.hdr-left{display:flex;align-items:baseline;gap:.8rem}
-.hdr-title{font-family:var(--display);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:400;color:var(--text)}
+.hdr{display:flex;align-items:baseline;justify-content:space-between;flex-shrink:0;margin-bottom:clamp(.3rem,.8vh,.6rem)}
+.hdr-left{display:flex;align-items:baseline;gap:1rem}
+.hdr-title{font-family:var(--display);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;color:var(--text)}
 .hdr-title em{font-style:italic;color:var(--accent)}
-.hdr-sub{font-size:.7rem;color:var(--text3);letter-spacing:.05em}
-.hdr-year{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.8rem);color:var(--accent);font-weight:400;line-height:1;transition:color .3s}
+.hdr-sub{font-size:.85rem;color:var(--text3);letter-spacing:.05em}
+.hdr-year{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);color:var(--accent);font-weight:400;line-height:1}
 
 /* ═══════ STATS ROW ═══════ */
-.stats-row{display:flex;gap:clamp(.8rem,3vw,2.5rem);flex-shrink:0;margin-bottom:clamp(.3rem,.8vh,.6rem);align-items:baseline}
-.st{display:flex;align-items:baseline;gap:.4rem}
-.st-v{font-family:var(--display);font-size:clamp(.95rem,1.5vw,1.2rem);color:var(--text);font-weight:400;transition:all .3s}
-.st-l{font-size:.6rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;font-weight:500}
-.st-era{font-family:var(--display);font-style:italic;font-size:clamp(.75rem,1.1vw,.9rem);color:var(--text2)}
+.stats-row{display:flex;gap:clamp(1rem,3vw,2.5rem);flex-shrink:0;margin-bottom:clamp(.3rem,.8vh,.6rem);align-items:baseline}
+.st{display:flex;align-items:baseline;gap:.5rem}
+.st-v{font-family:var(--display);font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--text);font-weight:400;transition:all .3s}
+.st-l{font-size:.75rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.st-era{font-family:var(--display);font-style:italic;font-size:clamp(.9rem,1.3vw,1.1rem);color:var(--text2)}
 
 /* ═══════ CHART ═══════ */
 .chart-area{flex:1;min-height:0;display:flex;flex-direction:column;position:relative}
-.chart-grid{flex:1;min-height:0;display:flex;position:relative}
 
 /* Watermark */
-.wm{position:absolute;z-index:0;pointer-events:none;font-family:var(--display);font-weight:400;font-size:clamp(10rem,28vw,24rem);color:rgba(255,255,255,.015);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:.05em;line-height:1;white-space:nowrap;transition:opacity .3s}
+.wm{position:absolute;z-index:0;pointer-events:none;font-family:var(--display);font-weight:400;font-size:clamp(10rem,28vw,24rem);color:rgba(255,255,255,.015);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:.05em;line-height:1;white-space:nowrap}
 
-/* Y Axis */
-.y-ax{flex-shrink:0;width:clamp(2rem,3.5vw,3rem);display:flex;flex-direction:column;justify-content:space-between;padding-right:.3rem}
-.y-ax span{font-size:clamp(.45rem,.6vw,.55rem);color:var(--text3);text-align:right;line-height:1;font-weight:400;white-space:nowrap;font-variant-numeric:tabular-nums}
+/* The chart-grid: y-axis labels | canvas | gap | nothing. x-axis labels below canvas */
+.chart-grid{flex:1;min-height:0;position:relative}
 
-/* Canvas */
-.hm-col{flex:1;min-width:0;display:flex;flex-direction:column}
-#hm{flex:1;width:100%;display:block;cursor:crosshair;border-radius:2px;border:1px solid var(--border)}
-
-/* X Axis */
-.x-ax{display:flex;padding-top:.25rem;height:1.5rem;overflow:hidden}
-.x-ax span{font-size:clamp(.42rem,.55vw,.5rem);color:var(--text3);flex-shrink:0;transform:rotate(-45deg);transform-origin:top left;white-space:nowrap;font-variant-numeric:tabular-nums}
+/* We render axes ON the canvas itself for pixel-perfect alignment */
+#hm{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair}
 
 /* ═══════ LEGEND + CONTROLS ═══════ */
-.bottom{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;margin-top:clamp(.2rem,.5vh,.4rem);gap:1rem;flex-wrap:wrap}
-.legend{display:flex;align-items:center;gap:.5rem}
-.legend span{font-size:.55rem;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
-#legBar{width:clamp(80px,14vw,160px);height:8px;border-radius:4px;border:1px solid var(--border)}
+.bottom{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;margin-top:clamp(.3rem,.6vh,.5rem);gap:1rem;flex-wrap:wrap}
+.legend{display:flex;align-items:center;gap:.6rem}
+.legend span{font-size:.7rem;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+#legBar{width:clamp(100px,16vw,200px);height:10px;border-radius:5px;border:1px solid var(--border)}
 
-.controls{display:flex;align-items:center;gap:clamp(.4rem,1vw,.8rem);flex-wrap:wrap}
-.btn{font-family:var(--sans);font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);background:var(--surface);border:1px solid var(--border);padding:.4rem .9rem;cursor:pointer;transition:all .25s;border-radius:2px;white-space:nowrap}
+.controls{display:flex;align-items:center;gap:clamp(.5rem,1.2vw,1rem);flex-wrap:wrap}
+.btn{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);background:var(--surface);border:1px solid var(--border);padding:.5rem 1.1rem;cursor:pointer;transition:all .25s;border-radius:2px;white-space:nowrap}
 .btn:hover,.btn.on{color:var(--accent);border-color:rgba(240,160,80,.3);background:rgba(240,160,80,.06)}
-.btn.on{box-shadow:0 0 12px rgba(240,160,80,.06)}
-.yr-d{font-family:var(--display);font-size:clamp(1rem,2vw,1.5rem);color:var(--accent);min-width:3.5rem;text-align:center}
-input[type=range]{-webkit-appearance:none;appearance:none;width:clamp(120px,25vw,360px);height:3px;background:var(--surface2);border-radius:2px;outline:none;cursor:pointer}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 1px rgba(240,160,80,.3);cursor:pointer;transition:box-shadow .2s}
-input[type=range]::-webkit-slider-thumb:hover{box-shadow:0 0 0 3px rgba(240,160,80,.15)}
-input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer}
+.yr-d{font-family:var(--display);font-size:clamp(1.2rem,2.2vw,1.7rem);color:var(--accent);min-width:3.5rem;text-align:center}
+input[type=range]{-webkit-appearance:none;appearance:none;width:clamp(140px,28vw,400px);height:3px;background:var(--surface2);border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 1px rgba(240,160,80,.3);cursor:pointer;transition:box-shadow .2s}
+input[type=range]::-webkit-slider-thumb:hover{box-shadow:0 0 0 4px rgba(240,160,80,.15)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer}
 .spd{display:flex;gap:2px}
-.spd .btn{padding:.3rem .55rem;font-size:.55rem}
+.spd .btn{padding:.4rem .65rem;font-size:.65rem}
 
 /* ═══════ TOOLTIP ═══════ */
 #tt{position:fixed;z-index:500;display:none;pointer-events:none}
-.tt-box{background:rgba(12,14,19,.94);border:1px solid rgba(240,160,80,.2);padding:.75rem 1rem;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:4px;box-shadow:0 12px 40px rgba(0,0,0,.5);min-width:180px;max-width:300px}
+.tt-box{background:rgba(12,14,19,.94);border:1px solid rgba(240,160,80,.2);padding:.9rem 1.1rem;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:4px;box-shadow:0 12px 40px rgba(0,0,0,.5);min-width:200px;max-width:340px}
 .tt-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
-.tt-dim{font-size:.65rem;color:var(--text2);font-weight:500}
-.tt-cell{font-size:.6rem;color:var(--text3);font-variant-numeric:tabular-nums}
-.tt-names{font-size:.78rem;color:var(--text);line-height:1.65;font-weight:300}
-.tt-names .more{color:var(--text3);font-style:italic;font-size:.7rem}
-.tt-n{margin-top:.4rem;font-size:.6rem;color:var(--text3);font-style:italic}
-.tt-bar{height:2px;border-radius:1px;margin-top:.5rem;background:var(--surface2);overflow:hidden}
-.tt-bar-fill{height:100%;background:linear-gradient(90deg,var(--mid),var(--accent));border-radius:1px;transition:width .2s}
+.tt-dim{font-size:.8rem;color:var(--text2);font-weight:500}
+.tt-cell{font-size:.75rem;color:var(--text3)}
+.tt-names{font-size:.9rem;color:var(--text);line-height:1.7;font-weight:300}
+.tt-names .more{color:var(--text3);font-style:italic;font-size:.8rem}
+.tt-n{margin-top:.4rem;font-size:.75rem;color:var(--text3);font-style:italic}
+.tt-bar{height:3px;border-radius:1.5px;margin-top:.5rem;background:var(--surface2);overflow:hidden}
+.tt-bar-fill{height:100%;background:linear-gradient(90deg,#3d7a8a,var(--accent));border-radius:1.5px;transition:width .2s}
 
-/* ═══════ NOISE OVERLAY ═══════ */
-.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;mix-blend-mode:overlay}
+/* ═══════ NOISE ═══════ */
+.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.02;mix-blend-mode:overlay}
 .noise canvas{width:100%;height:100%}
-
-/* ═══════ GLOW RING (behind chart) ═══════ */
 .glow{position:fixed;pointer-events:none;z-index:0;width:70vw;height:70vh;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(240,160,80,.02) 0%,transparent 60%);filter:blur(40px)}
 
-/* ═══════ RESPONSIVE ═══════ */
-@media(max-width:640px){
+@media(max-width:700px){
   .hdr{flex-direction:column;gap:.3rem;align-items:flex-start}
   .stats-row{flex-wrap:wrap;gap:.6rem}
   .bottom{flex-direction:column;align-items:center}
@@ -163,11 +151,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <div class="chart-area">
     <div class="wm" id="wm">1947</div>
     <div class="chart-grid">
-      <div class="y-ax" id="yAx"></div>
-      <div class="hm-col">
-        <canvas id="hm"></canvas>
-        <div class="x-ax" id="xAx"></div>
-      </div>
+      <canvas id="hm"></canvas>
     </div>
   </div>
 
@@ -203,6 +187,9 @@ const P=[["A.C. Green",81,220,1986,2001],["A.J. Bramlett",82,227,2000,2000],["A.
 const MH=60,XH=96,MW=100,XW=400,HB=1,WB=5;
 const NR=(XH-MH)/HB, NC=(XW-MW)/WB;
 const Y0=1947,Y1=2026;
+
+// Margins for axes drawn ON the canvas (in CSS pixels)
+const ML=52,MB=44,MT=4,MR=10;
 
 // ══════════════════════════════════════
 // PRECOMPUTE
@@ -243,7 +230,7 @@ function era(y){
 }
 
 // ══════════════════════════════════════
-// COLOR SCALE — deep void → cool teal → warm amber → white hot
+// COLOR SCALE
 // ══════════════════════════════════════
 const CS=[
   [0.00, 12,14,19],
@@ -267,25 +254,34 @@ function cLerp(t){
   }
   return CS[CS.length-1].slice(1);
 }
-// LUT
 const LUT=new Uint8Array(768);
 for(let i=0;i<256;i++){const c=cLerp(i/255);LUT[i*3]=c[0]|0;LUT[i*3+1]=c[1]|0;LUT[i*3+2]=c[2]|0;}
 
 // ══════════════════════════════════════
-// HEATMAP
+// HEATMAP — axes drawn directly on canvas
 // ══════════════════════════════════════
 const cvs=document.getElementById('hm'),cx=cvs.getContext('2d');
 let curY=Y0;
 let dGrid=new Float32Array(NR*NC),tGrid=new Float32Array(NR*NC);
 let lerpActive=false;
 
-function renderHM(){
+// Plot area in CSS px
+let plotL,plotT,plotW,plotH,cellW,cellH,totalW,totalH;
+
+function sizeCanvas(){
   const par=cvs.parentElement;
   const rect=par.getBoundingClientRect();
   const dpr=window.devicePixelRatio||1;
-  const W=rect.width,H=rect.height-20;
-  if(cvs.width!==W*dpr||cvs.height!==H*dpr){cvs.width=W*dpr;cvs.height=H*dpr;cvs.style.width=W+'px';cvs.style.height=H+'px';}
+  totalW=rect.width;totalH=rect.height;
+  cvs.width=totalW*dpr;cvs.height=totalH*dpr;
+  cvs.style.width=totalW+'px';cvs.style.height=totalH+'px';
   cx.setTransform(dpr,0,0,dpr,0,0);
+  plotL=ML;plotT=MT;plotW=totalW-ML-MR;plotH=totalH-MT-MB;
+  cellW=plotW/NC;cellH=plotH/NR;
+}
+
+function renderHM(){
+  sizeCanvas();
 
   // Lerp
   if(lerpActive){
@@ -298,31 +294,21 @@ function renderHM(){
     if(done)lerpActive=false;
   }
 
-  const cW=W/NC,cH=H/NR;
-  const iW=Math.ceil(W),iH=Math.ceil(H);
-  const img=cx.createImageData(iW,iH);
-  const px=img.data;
+  cx.clearRect(0,0,totalW,totalH);
 
+  // ── Draw heatmap cells ──
   for(let r=0;r<NR;r++){
-    const sr=NR-1-r;
-    const py0=Math.floor(sr*cH),py1=Math.min(iH,Math.floor((sr+1)*cH));
+    const sr=NR-1-r; // flip: bottom = short, top = tall
+    const py=plotT+sr*cellH;
     for(let c=0;c<NC;c++){
       const v=dGrid[r*NC+c];
       const ci=Math.min(255,Math.max(0,(v*255)|0));
-      const R=LUT[ci*3],G=LUT[ci*3+1],B=LUT[ci*3+2];
-      const px0=Math.floor(c*cW),px1=Math.min(iW,Math.floor((c+1)*cW));
-      for(let py=py0;py<py1;py++){
-        const row=py*iW;
-        for(let ppx=px0;ppx<px1;ppx++){
-          const o=(row+ppx)*4;
-          px[o]=R;px[o+1]=G;px[o+2]=B;px[o+3]=255;
-        }
-      }
+      cx.fillStyle=`rgb(${LUT[ci*3]},${LUT[ci*3+1]},${LUT[ci*3+2]})`;
+      cx.fillRect(plotL+c*cellW, py, Math.ceil(cellW)+.5, Math.ceil(cellH)+.5);
     }
   }
-  cx.putImageData(img,0,0);
 
-  // Bloom for peaks
+  // ── Bloom for peaks ──
   cx.save();
   cx.globalCompositeOperation='screen';
   for(let r=0;r<NR;r++){
@@ -331,8 +317,8 @@ function renderHM(){
       if(v>.5){
         const b=(v-.5)*2;
         const sr=NR-1-r;
-        const x=c*cW+cW/2,y=sr*cH+cH/2;
-        const rad=Math.max(cW,cH)*(.8+b*1.2);
+        const x=plotL+c*cellW+cellW/2, y=plotT+sr*cellH+cellH/2;
+        const rad=Math.max(cellW,cellH)*(.8+b*1.2);
         const grd=cx.createRadialGradient(x,y,0,x,y,rad);
         grd.addColorStop(0,`rgba(255,244,224,${b*.08})`);
         grd.addColorStop(.4,`rgba(240,160,80,${b*.04})`);
@@ -344,10 +330,59 @@ function renderHM(){
   }
   cx.restore();
 
-  // Grid
-  cx.strokeStyle='rgba(255,255,255,.018)';cx.lineWidth=.5;
-  for(let r=0;r<=NR;r++){if(r%2===0){cx.beginPath();cx.moveTo(0,r*cH);cx.lineTo(W,r*cH);cx.stroke();}}
-  for(let c=0;c<=NC;c++){if(c%4===0){cx.beginPath();cx.moveTo(c*cW,0);cx.lineTo(c*cW,H);cx.stroke();}}
+  // ── Grid lines ──
+  cx.strokeStyle='rgba(255,255,255,.025)';
+  cx.lineWidth=.5;
+  for(let r=0;r<=NR;r++){
+    if(r%3===0){cx.beginPath();cx.moveTo(plotL,plotT+r*cellH);cx.lineTo(plotL+plotW,plotT+r*cellH);cx.stroke();}
+  }
+  for(let c=0;c<=NC;c++){
+    if(c%5===0){cx.beginPath();cx.moveTo(plotL+c*cellW,plotT);cx.lineTo(plotL+c*cellW,plotT+plotH);cx.stroke();}
+  }
+
+  // ── Border ──
+  cx.strokeStyle='rgba(255,255,255,.08)';
+  cx.lineWidth=1;
+  cx.strokeRect(plotL,plotT,plotW,plotH);
+
+  // ── Y-AXIS labels (heights) — perfectly aligned to cell centers ──
+  cx.fillStyle='#6e6c68';
+  cx.font='500 13px "DM Sans", sans-serif';
+  cx.textAlign='right';
+  cx.textBaseline='middle';
+  for(let r=0;r<NR;r++){
+    const h=MH+r;
+    if(h%3===0){
+      const sr=NR-1-r;
+      const y=plotT+sr*cellH+cellH/2;
+      const ft=Math.floor(h/12);
+      const inc=h%12;
+      cx.fillText(ft+"'"+inc+'"', plotL-8, y);
+    }
+  }
+
+  // ── X-AXIS labels (weights) — perfectly aligned to cell centers ──
+  cx.textAlign='center';
+  cx.textBaseline='top';
+  for(let c=0;c<NC;c++){
+    const w=MW+c*WB;
+    if(w%25===0){
+      const x=plotL+c*cellW+cellW/2;
+      cx.fillText(w+' lb', x, plotT+plotH+8);
+    }
+  }
+
+  // ── Axis titles ──
+  cx.fillStyle='#5c5a57';
+  cx.font='italic 500 12px "DM Sans", sans-serif';
+  cx.textAlign='center';
+  cx.fillText('Weight (lbs)', plotL+plotW/2, plotT+plotH+30);
+
+  cx.save();
+  cx.translate(14, plotT+plotH/2);
+  cx.rotate(-Math.PI/2);
+  cx.fillText('Height', 0, 0);
+  cx.restore();
 
   if(lerpActive)requestAnimationFrame(renderHM);
 }
@@ -374,28 +409,11 @@ function updUI(y){
 }
 
 // ══════════════════════════════════════
-// AXES
-// ══════════════════════════════════════
-function buildAxes(){
-  const yA=document.getElementById('yAx'),xA=document.getElementById('xAx');
-  yA.innerHTML='';xA.innerHTML='';
-  for(let r=NR-1;r>=0;r--){
-    const h=MH+r;const sp=document.createElement('span');
-    if(h%3===0){const f=Math.floor(h/12);sp.textContent=f+"'"+h%12+'"';}
-    yA.appendChild(sp);
-  }
-  for(let c=0;c<NC;c++){
-    const w=MW+c*WB;
-    if(w%25===0){const sp=document.createElement('span');sp.textContent=w;xA.appendChild(sp);}
-  }
-}
-
-// ══════════════════════════════════════
 // LEGEND
 // ══════════════════════════════════════
 function drawLeg(){
   const c=document.getElementById('legBar');
-  const w=c.clientWidth||140,h=c.clientHeight||8;
+  const w=c.clientWidth||160,h=c.clientHeight||10;
   c.width=w*2;c.height=h*2;
   const ctx=c.getContext('2d');ctx.scale(2,2);
   for(let x=0;x<w;x++){
@@ -407,21 +425,23 @@ function drawLeg(){
 }
 
 // ══════════════════════════════════════
-// TOOLTIP
+// TOOLTIP — uses plot coordinates
 // ══════════════════════════════════════
 const tt=document.getElementById('tt');
 cvs.addEventListener('mousemove',e=>{
   const rect=cvs.getBoundingClientRect();
-  const mx=e.clientX-rect.left,my=e.clientY-rect.top;
-  const cW=rect.width/NC,cH=rect.height/NR;
-  const col=Math.floor(mx/cW),row=NR-1-Math.floor(my/cH);
+  const mx=e.clientX-rect.left, my=e.clientY-rect.top;
+  // Map to plot area
+  const px=mx-plotL, py=my-plotT;
+  if(px<0||px>plotW||py<0||py>plotH){tt.style.display='none';return;}
+  const col=Math.floor(px/cellW), row=NR-1-Math.floor(py/cellH);
   if(row<0||row>=NR||col<0||col>=NC){tt.style.display='none';return;}
   const s=SN[curY],idx=row*NC+col,raw=s.raw[idx];
   if(!raw){tt.style.display='none';return;}
   const ht=MH+row,ft=Math.floor(ht/12),inc=ht%12;
   const wL=MW+col*WB,wH=wL+WB;
   tt.style.display='block';
-  tt.querySelector('.tt-dim').textContent=curY+'–'+(curY<2026?(curY+1)+'':'26')+' Season';
+  tt.querySelector('.tt-dim').textContent=curY+' Season';
   tt.querySelector('.tt-cell').textContent=`${ft}'${inc}" · ${wL}–${wH} lbs`;
   const names=s.names[idx]||[];
   const mx2=15;
@@ -430,8 +450,8 @@ cvs.addEventListener('mousemove',e=>{
   tt.querySelector('.tt-names').innerHTML=h;
   tt.querySelector('.tt-n').textContent=`${raw|0} player${raw>1?'s':''} in this cell`;
   tt.querySelector('.tt-bar-fill').style.width=(s.nm[idx]*100)+'%';
-  let tx=e.clientX+16,ty=e.clientY-10;
-  if(tx+320>innerWidth)tx=e.clientX-320;
+  let tx=e.clientX+18,ty=e.clientY-10;
+  if(tx+350>innerWidth)tx=e.clientX-350;
   if(ty+180>innerHeight)ty=e.clientY-190;
   if(ty<8)ty=8;
   tt.style.left=tx+'px';tt.style.top=ty+'px';
@@ -451,7 +471,7 @@ function togglePlay(){
 }
 function tick(){
   if(!playing)return;
-  if(curY>=Y1){curY=Y0-1;}
+  if(curY>=Y1)curY=Y0-1;
   curY++;
   setYear(curY);
   if(curY>=Y1){playing=false;document.getElementById('playBtn').textContent='▶ Play';document.getElementById('playBtn').classList.remove('on');return;}
@@ -464,11 +484,7 @@ function setSpd(s,btn){spd=s;document.querySelectorAll('.spd .btn').forEach(b=>b
 // ══════════════════════════════════════
 const nCvs=document.getElementById('noiseCvs'),nCx=nCvs.getContext('2d');
 nCvs.width=200;nCvs.height=200;
-function drawNoise(){
-  const d=nCx.createImageData(200,200),p=d.data;
-  for(let i=0;i<p.length;i+=4){const v=Math.random()*255|0;p[i]=p[i+1]=p[i+2]=v;p[i+3]=255;}
-  nCx.putImageData(d,0,0);
-}
+function drawNoise(){const d=nCx.createImageData(200,200),p=d.data;for(let i=0;i<p.length;i+=4){const v=Math.random()*255|0;p[i]=p[i+1]=p[i+2]=v;p[i+3]=255;}nCx.putImageData(d,0,0);}
 setInterval(drawNoise,80);drawNoise();
 
 // ══════════════════════════════════════
@@ -476,16 +492,9 @@ setInterval(drawNoise,80);drawNoise();
 // ══════════════════════════════════════
 function animateCount(){
   const el=document.getElementById('introNum');
-  const target=P.length;
-  const dur=1800;
-  const start=performance.now();
+  const target=P.length;const dur=1800;const start=performance.now();
   el.style.opacity='1';
-  function step(now){
-    const t=Math.min(1,(now-start)/dur);
-    const ease=1-Math.pow(1-t,3);
-    el.textContent=Math.round(ease*target).toLocaleString();
-    if(t<1)requestAnimationFrame(step);
-  }
+  function step(now){const t=Math.min(1,(now-start)/dur);const e=1-Math.pow(1-t,3);el.textContent=Math.round(e*target).toLocaleString();if(t<1)requestAnimationFrame(step);}
   requestAnimationFrame(step);
 }
 setTimeout(animateCount,200);
@@ -497,14 +506,14 @@ function enterApp(){
   document.getElementById('intro').classList.add('out');
   document.getElementById('app').classList.add('show');
   setTimeout(()=>{
-    buildAxes();drawLeg();
+    drawLeg();
     dGrid.set(SN[Y0].nm);tGrid.set(SN[Y0].nm);
     renderHM();updUI(Y0);
     window.addEventListener('resize',()=>renderHM());
   },150);
 }
 
-// Keyboard shortcuts
+// Keyboard
 document.addEventListener('keydown',e=>{
   if(e.code==='Space'){e.preventDefault();if(document.getElementById('app').classList.contains('show'))togglePlay();else enterApp();}
   if(e.code==='ArrowRight'&&!playing&&curY<Y1)setYear(curY+1);
